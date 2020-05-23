@@ -67,7 +67,7 @@ colors = generateRandomColors(numberOfSquares);
   squares[i].style.display = "block" ;   
   colors[i] ? squares[i].style.backgroundColor = colors[i] : squares[i].style.display = "none";
  }
- h1.style.backgroundColor = "steelBlue";
+ h1.style.backgroundColor = "#e87495";
 }
 
 

@@ -7,14 +7,33 @@ let h1 = document.querySelector("h1");
 let resetButton = document.querySelector("#reset");
 let easyButton = document.querySelector("#easyBtn");
 let hardButton = document.querySelector("#hardBtn");
+let numberOfSquares = 6;
 
 easyButton.addEventListener("click",function(){
     hardButton.classList.remove("selected");
     easyButton.classList.add("selected");
+    numberOfSquares = 3
+    colors = generateRandomColors(numberOfSquares);
+    pickedColor = pickRandomColor();
+    for(let i = 0 ;i < squares.length ; i++){
+        if(colors[i]){
+            squares[i].style.backgroundColor = colors[i];
+        }
+        else{
+            squares[i].style.display = "none";
+        }
+    }
 });
 hardButton.addEventListener("click",function(){
     hardButton.classList.add("selected");
     easyButton.classList.remove("selected")
+    numberOfSquares = 6;
+    colors = generateRandomColors(numberOfSquares);
+    pickedColor = pickRandomColor();
+    for(let i = 0 ;i < squares.length ; i++){
+         squares[i].style.backgroundColor = colors[i];
+         squares[i].style.display = "block"
+    }
 });
 
 
@@ -25,7 +44,7 @@ colorDisplay.textContent = pickedColor;
 // Reset button
 resetButton.addEventListener("click",function(){
     // generate new colors
-    colors = generateRandomColors(6);
+    colors = generateRandomColors(numberOfSquares);
     //pick new random  color from array
      pickedColor = pickRandomColor();
      //change colorDisplay to match picked color

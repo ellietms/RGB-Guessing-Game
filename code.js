@@ -5,6 +5,20 @@ let colorDisplay = document.querySelector("#colorDisplay");
 let messageDisplay = document.querySelector("#message");
 let h1 = document.querySelector("h1");
 let resetButton = document.querySelector("#reset");
+let easyButton = document.querySelector("#easyBtn");
+let hardButton = document.querySelector("#hardBtn");
+
+easyButton.addEventListener("click",function(){
+    hardButton.classList.remove("selected");
+    easyButton.classList.add("selected");
+});
+hardButton.addEventListener("click",function(){
+    hardButton.classList.add("selected");
+    easyButton.classList.remove("selected")
+});
+
+
+
 colorDisplay.textContent = pickedColor;
 
 

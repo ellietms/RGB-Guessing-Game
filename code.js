@@ -1,12 +1,29 @@
 let colors= generateRandomColors(6);
-let squares = document.querySelectorAll(".square");
-let pickColor = pickRandomColor();
+let squares = document.querySelectorAll(".square"); //Nodelist
+let pickedColor = pickRandomColor();
 let colorDisplay = document.querySelector("#colorDisplay");
 let messageDisplay = document.querySelector("#message");
 let h1 = document.querySelector("h1");
-colorDisplay.textContent = pickColor;
+let resetButton = document.querySelector("#reset");
+colorDisplay.textContent = pickedColor;
 
 
+// Reset button
+resetButton.addEventListener("click",function(){
+    // generate new colors
+    colors = generateRandomColors(6);
+    //pick new random  color from array
+     pickedColor = pickRandomColor();
+     //change colorDisplay to match picked color
+     colorDisplay.textContent = pickedColor;
+     for(let i =0 ; i < squares.length ; i++){
+         squares[i].style.backgroundColor = colors[i];
+     }
+     h1.style.backgroundColor = "#232323";
+})
+
+
+//set color and addEventListener for each square
 for(let i=0;i < squares.length ; i++){
 // add initial colors to squares
  squares[i].style.backgroundColor = colors[i];
@@ -15,10 +32,11 @@ squares[i].addEventListener("click",function(){
 // grab color of clicked square
 let colorClickedSquare =this.style.backgroundColor;
 // compare color to pickedColor
-if(colorClickedSquare === pickColor){
+if(colorClickedSquare === pickedColor){
     messageDisplay.textContent = "Correct";
+    resetButton.textContent = "Play Again?";
     // change the color of all squares
-    changeColors(colorClickedSquare);
+    changeToSameColor(colorClickedSquare);
     // change color of h1
     h1.style.backgroundColor = colorClickedSquare;
 }
@@ -28,8 +46,9 @@ else{
 }
 }
 )}
-//  change color of all squares
-function changeColors(color){
+
+//  change color of all squares to the correct color    
+function changeToSameColor(color){
  // loop through all squares
 for(let i=0; i < colors.length; i++){
 // change each color to match given color

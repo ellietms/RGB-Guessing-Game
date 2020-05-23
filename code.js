@@ -8,11 +8,22 @@ let colors=[
 ]
 
 let squares = document.querySelectorAll(".square");
+console.log(squares)
 let pickColor = colors[3];
 let colorDisplay = document.querySelector("#colorDisplay");
 colorDisplay.textContent = pickColor;
-
-
 for(let i=0;i < squares.length ; i++){
- squares[i].style.backgroundColor = colors[i]
+// add initial colors to squares
+ squares[i].style.backgroundColor = colors[i];
+//add click listeners to squares
+squares[i].addEventListener("click",function(){
+// grab color of clicked square
+let colorClickedSquare =this.style.background
+// compare color to pickedColor
+if(colorClickedSquare == pickColor){
+    
+}
+
+})  
+
 }
